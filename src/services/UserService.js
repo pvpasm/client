@@ -13,9 +13,9 @@ class UserService {
                     username: username,
                     password: password
                 });
-                resolve(data);
+                resolve(res.data);
             } catch(err) {
-                reject("Login failed!");
+                reject(err.response.data.error);
             }
         })
     }
@@ -30,7 +30,7 @@ class UserService {
                 });
                 resolve(res.data);
             } catch(err) {
-                reject("Register failed!");
+                reject(err.response.data.error);
             }
         })
     }
