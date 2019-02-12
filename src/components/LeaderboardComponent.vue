@@ -1,28 +1,9 @@
 <template>
   <div id="app">
     <Navbar tab="Leaderboard"/>
-    <div class="container py-4">
-      <table class="table table-hover">
-        <thead class="table-primary">
-          <tr>
-            <th style="width: 15%" scope="col">RANK</th>
-            <th style="width: 70%" scope="col">USERNAME</th>
-            <th style="width: 15%" scope="col">POINTS</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="(user, index) in leaderboard"
-            v-bind:item="user"
-            v-bind:index="index"
-            v-bind:key="user._id">
-            <td style="width: 15%">{{ user.rank }}</td>
-            <td style="width: 70%">{{ user.username }}</td>
-            <td style="width: 15%">{{ user.score }}</td>
-          </tr>
-        </tbody>
-      </table> 
-    </div>
+    <b-container class="py-4">
+      <b-table striped hover :items="leaderboard"></b-table>
+    </b-container>
   </div>
 </template>
 
