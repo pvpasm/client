@@ -1,17 +1,27 @@
 <template>
-  <div class="card mx-auto w-25 mt-5" v-bind:class="getCardClass()">
-    <div class="card-body">
-      <div class="row py-4 mx-auto">
-        <code class="code">{{ puzzle }}</code>
-      </div>
+  <b-container class="h-100">
+    <b-row class="h-100">
+      <b-card class="mx-auto my-auto w-25" v-bind:class="getCardClass()">
+        <b-row class="py-4 mx-auto">
+          <code class="code">{{ puzzle }}</code>
+        </b-row>
 
-      <div class="form-group">
-        <label for="exampleTextarea">Code</label>
-        <textarea class="form-control text-primary" rows="3" :disabled="status != -1" v-model="code"></textarea>
-      </div>
-      <button class="btn btn-secondary btn-block" :disabled="status != -1 || !code" v-on:click='submit'>Submit</button>
-    </div>
-  </div>
+        <b-form-group
+            id="field-code"
+            label="Code"
+            label-for="input-code"
+        >
+          <b-form-textarea id="input-code"
+                          v-model="code"
+                          placeholder="Your code"
+                          :rows="3">
+          </b-form-textarea>
+        </b-form-group>
+
+        <b-button variant="secondary" block="true" v-on:click="submit" :disabled="status != -1 || !code">Submit</b-button>
+      </b-card>
+    </b-row>
+  </b-container>
 </template>
 
 <script>

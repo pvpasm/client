@@ -14,6 +14,14 @@ body {
     height: 88% !important;
 }
 
+.VueCarousel-dot-container {
+    margin-top: 0.5em !important;
+}
+
+.VueCarousel-dot {
+    margin-top: 0px !important;
+}
+
 /* .fa-check {
     color: greenyellow;
 }
