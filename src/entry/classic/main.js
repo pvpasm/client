@@ -1,7 +1,13 @@
 import Vue from 'vue';
 import App from './../../components/ClassicComponent.vue';
+import BootstrapVue from 'bootstrap-vue'
 
-Vue.config.productionTip = false
+// import 'bootstrap/dist/css/bootstrap.css'
+import './../../../public/static/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.config.productionTip = false;
+Vue.use(BootstrapVue);
 
 new Vue({
   render: h => h(App),
