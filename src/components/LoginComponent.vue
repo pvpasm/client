@@ -28,7 +28,7 @@
 
           <b-alert class="mt-4" variant="danger"
                   dismissible
-                  :show="error">
+                  :show="error.length > 0">
             {{ error }}
           </b-alert>
         </b-card>
@@ -45,7 +45,7 @@ export default {
   name: 'Login',
   data() {
     return {
-      error: false,
+      error: '',
       username: '',
       password: ''
     }
