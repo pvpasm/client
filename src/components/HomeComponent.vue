@@ -1,16 +1,16 @@
 <template>
   <div id="app">
   <Navbar/>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 pt-5">
-        <News/>
-      </div>
-      <div class="offset-md-1 col-md-5 pt-5">
-        <About/>
-      </div>
-    </div>
-  </div>
+    <b-container>
+      <b-row>
+        <b-col class="pt-5">
+          <News/>
+        </b-col>
+        <b-col class="pt-5" offset="1">
+          <About/>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 

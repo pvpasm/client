@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <b-row>
       <ul>
         <li>
           Compete against others 
@@ -12,7 +12,7 @@
           Climb the leaderboard
         </li>
       </ul>
-    </div>
+    </b-row>
 
     <div>
       <p>This project was inspired by Codefights and xorpd riddles.</p>

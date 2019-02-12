@@ -1,6 +1,6 @@
 <template>
-  <ul class="list-group">
-    <li href="#" class="list-group-item flex-column align-items-start border-primary"
+  <b-list-group>
+    <b-list-group-item class="border-primary"
       v-for="(news, index) in news"
       v-bind:item="news"
       v-bind:index="index"
@@ -10,8 +10,8 @@
         <small>{{ `${news.date.getDate()}/${news.date.getMonth() + 1}/${news.date.getFullYear()}` }}</small>
       </div>
       <p class="mb-1">{{ news.desc }}</p>
-    </li>
-  </ul>
+    </b-list-group-item>
+  </b-list-group>
 </template>
 
 <script>
