@@ -1,22 +1,36 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">pvpasm</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-      
-    <div class="collapse navbar-collapse w-100 order-1 order-md-0 dual-collapse2" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-      <li class="nav-item" v-bind:class="{ active: tab === 'Challenge' }">
-        <a class="nav-link" href="/challenge">Challenge</a>
-      </li>
-      <li class="nav-item" v-bind:class="{ active: tab === 'Leaderboard' }">
-        <a class="nav-link" href="/leaderboard">Leaderboard</a>
-      </li>
-      </ul>
-    </div>
+  <b-navbar toggleable="md" type="dark" variant="primary">
 
-    <div class="navbar-collapse collapse w-100 order-0 dual-collapse2" id="navbarColor01">
+    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+  
+    <b-navbar-brand href="/">pvpasm</b-navbar-brand>
+
+    <b-collapse is-nav id="nav_collapse">
+      
+      <b-navbar-nav>
+        <b-nav-item href="/challenge" v-bind:class="{ active: tab === 'Challenge' }">Challenge</b-nav-item>
+        <b-nav-item href="/leaderboard" v-bind:class="{ active: tab === 'Leaderboard' }">Leaderboard</b-nav-item>
+      </b-navbar-nav>
+
+      <b-navbar-nav class="ml-auto">
+
+        <b-navbar-nav v-if="!user">
+          <b-nav-item href="/login" v-bind:class="{ active: tab === 'Login' }">Login</b-nav-item>
+          <b-nav-item href="/register" v-bind:class="{ active: tab === 'Register' }">Register</b-nav-item>
+        </b-navbar-nav>
+
+        <b-nav-item-dropdown right v-if="user">
+          <template slot="button-content">
+            {{ user }}
+          </template>
+          <b-dropdown-item href="#" v-on:click="logout">Logout</b-dropdown-item>
+        </b-nav-item-dropdown>
+
+      </b-navbar-nav>
+
+    </b-collapse>
+
+    <!-- <div class="navbar-collapse collapse w-100 order-0 dual-collapse2" id="navbarColor01">
       <ul class="navbar-nav ml-auto" v-if="!user">
         <li class="nav-item" v-bind:class="{ active: tab === 'Login' }">
           <a class="nav-link" href="/login">Login</a>
@@ -35,8 +49,8 @@
           </div>
         </li>
       </ul>
-    </div>
-  </nav>
+    </div> -->
+  </b-navbar>
 </template>
 
 <script>
