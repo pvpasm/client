@@ -39,7 +39,7 @@
               </a>
           </div>
 
-          <a class="btn btn-secondary btn-lg btn-block mt-4 text-primary" href="classic">Start Challenge</a>
+          <a class="btn btn-secondary btn-lg btn-block mt-4 text-primary" href="/classic">Start Challenge</a>
 
         </div>
       </div>

@@ -12,11 +12,11 @@
 
                   <div class="py-2">
                     <ul>
-                      <li>
+                      <li class="pb-1">
                         There will be 3 <code>x86</code> assembly snippets, each representing a function, with varying levels of obfuscation.
                       </li>
-                      <li>
-                        The AMD64 calling convention will be followed, i.e. arguments in register <code>rdi</code>, <code>rsi</code>, <code>rdx</code>, ... and <code>rax</code> will contain the return value.
+                      <li class="pb-1">
+                        The AMD64 calling convention will be followed, i.e. arguments are in registers <code>rdi</code>, <code>rsi</code>, <code>rdx</code>, ... and <code>rax</code> will contain the return value.
                       </li>
                       <li>
                         You will provide a C statement that best represents that snippet, which the server will run a series of test cases against for validation.
@@ -40,13 +40,13 @@
               </div>
             </slide>
             <slide v-if="isStart">
-              <Puzzle num="1"/>
+              <Puzzle :num='1' @solved="solved"/>
             </slide>
             <slide v-if="isStart">
-              <Puzzle num="2"/>
+              <Puzzle :num='2' @solved="solved"/>
             </slide>
             <slide v-if="isStart">
-              <Puzzle num="3"/>
+              <Puzzle :num='3' @solved="solved"/>
             </slide>
             <slide v-if="isDone">              
               <Result/>
@@ -63,6 +63,7 @@ import Navbar from './NavbarComponent.vue';
 import Puzzle from './PuzzleComponent.vue';
 import Result from './ResultComponent.vue';
 import { Carousel, Slide } from 'vue-carousel';
+import ChallengeService from '../services/ChallengeService';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -73,7 +74,8 @@ export default {
   data() {
     return {
       isStart: false,
-      isDone: false
+      isDone: false,
+      numSolved: 3
     }
   },
   components: {
@@ -85,7 +87,9 @@ export default {
   },
   methods: {
     async start() {
-      // get result
+      // register start
+      await ChallengeService.start();
+
       this.isStart = true;
       this.carouselKey += 1;
       // short delay for <Puzzle/> to be rendered
@@ -98,7 +102,14 @@ export default {
       this.carouselKey += 1;
       // short delay for <Result/> to be rendered
       await sleep(5);
-      this.$refs.carousel.goToPage(3);
+      this.$refs.carousel.goToPage(4);
+    },
+    async solved() {
+      this.numSolved--;
+
+      if (this.numSolved == 0) {
+        this.end();
+      }
     }
   }
 }
