@@ -2,35 +2,38 @@
   <div id="app">
     <Navbar tab="Login"/>
 
-    <div class="container h-75">
-      <div class="row h-100">
-        <div class="card border-primary mb-3 mx-auto my-auto w-50">
-          <h4 class="card-header">Login</h4>
+    <b-container class="content">
+      <b-row class="h-100">
+        <b-card class="border-primary mx-auto my-auto w-50"
+          title="Login">
 
-          <div class="card-body">
-            <div class="form-group">
-              <label for="inputUsername">Username</label>
-              <input type="text" class="form-control" v-model="username" id="inputUsername" placeholder="Username"/>
-            </div>
-                
-            <div class="form-group">
-              <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" v-model="password" id="inputPassword" placeholder="Password"/>
-            </div>
+          <b-form-group
+              id="field-username"
+              label="Username"
+              label-for="input-username"
+          >
+            <b-form-input id="input-username" v-model.trim="username"></b-form-input>
+          </b-form-group>
 
-            <br>
+          <b-form-group
+              id="field-password"
+              label="Password"
+              label-for="input-password"
+          >
+            <b-form-input type="password" id="input-password" v-model="password"></b-form-input>
+          </b-form-group>
 
-            <button type="submit" class="btn btn-primary" v-on:click="login" :disabled="password == '' || username == ''">Submit</button>
-            <a href="forgot-password" class="card-link px-4">Forgot password?</a>
+          <b-button variant="primary" v-on:click="login" :disabled="!valid">Submit</b-button>
+          <a href="forgot-password" class="card-link px-4">Forgot password?</a>
 
-            <div class="alert alert-dismissible alert-danger mt-4" v-if="error">
-              <button type="button" class="close" v-on:click="error=false">&times;</button>
-                  Login Failed!
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <b-alert class="mt-4" variant="danger"
+                  dismissible
+                  :show="error">
+            {{ error }}
+          </b-alert>
+        </b-card>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -45,6 +48,17 @@ export default {
       error: false,
       username: '',
       password: ''
+    }
+  },
+  computed: {
+    valid() {
+      return this.usernameState && this.passwordState;
+    },
+    usernameState() {
+      return this.username.length > 0;
+    },
+    passwordState() {
+      return this.password.length > 0;
     }
   },
   components: {

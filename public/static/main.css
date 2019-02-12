@@ -10,6 +10,10 @@ body {
     height: 100%;
 }
 
+.content {
+    height: 88% !important;
+}
+
 /* .fa-check {
     color: greenyellow;
 }
