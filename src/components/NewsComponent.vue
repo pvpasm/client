@@ -27,7 +27,6 @@ export default {
   async created() {
     try {
       this.news = await NewsService.getNews();
-      console.log(this.news);
     } catch(err) {
 
     }
