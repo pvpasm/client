@@ -35,7 +35,7 @@
             </b-list-group-item>
           </b-list-group>
 
-          <button class="btn btn-secondary btn-lg btn-block mt-4 text-white" v-on:click="gotoChallenge">Start Challenge</button>
+          <button class="btn btn-secondary btn-lg btn-block mt-4 text-primary" v-on:click="gotoChallenge">Start Challenge</button>
 
         </b-col>
       </b-row>
