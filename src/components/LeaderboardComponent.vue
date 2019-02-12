@@ -17,8 +17,8 @@
             v-bind:index="index"
             v-bind:key="user._id">
             <td style="width: 15%">{{ user.rank }}</td>
-            <td style="width: 70%">{{ user.name }}</td>
-            <td style="width: 15%">{{ user.points }}</td>
+            <td style="width: 70%">{{ user.username }}</td>
+            <td style="width: 15%">{{ user.score }}</td>
           </tr>
         </tbody>
       </table> 
