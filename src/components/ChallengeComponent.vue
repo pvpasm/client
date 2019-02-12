@@ -39,7 +39,7 @@
               </a>
           </div>
 
-          <a class="btn btn-secondary btn-lg btn-block mt-4 text-primary" href="/classic">Start Challenge</a>
+          <button class="btn btn-secondary btn-lg btn-block mt-4 text-primary" v-on:click="gotoChallenge">Start Challenge</button>
 
         </div>
       </div>
@@ -60,6 +60,14 @@ export default {
   components: {
     Navbar,
     ChallengeHistory
+  },
+  methods: {
+    gotoChallenge() {
+      if (!getCookie("username"))
+        window.location.href = "/login";
+      else
+        window.location.href = "/classic";
+    }
   }
 }
 </script>
