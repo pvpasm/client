@@ -1,23 +1,15 @@
 <template>
-  <div class="card bg-primary mx-auto text-white w-25 mt-5">
+  <div class="card mx-auto w-25 mt-5" v-bind:class="getCardClass()">
     <div class="card-body">
-      <div class="row pt-3">
-        <code class="code">
-          xor eax, eax;
-          mov eax, 5;
-          sub ax, 3;
-          sub ax, 3;
-          sub ax, 3;
-          sub ax, 3;
-          sub ax, 3;
-        </code>
+      <div class="row py-4 mx-auto">
+        <code class="code">{{ puzzle }}</code>
       </div>
 
       <div class="form-group">
         <label for="exampleTextarea">Code</label>
-        <textarea class="form-control text-primary" rows="3"></textarea>
+        <textarea class="form-control text-primary" rows="3" :disabled="status != -1" v-model="code"></textarea>
       </div>
-      <button class="btn btn-secondary btn-block">Submit</button>
+      <button class="btn btn-secondary btn-block" :disabled="status != -1 || !code" v-on:click='submit'>Submit</button>
     </div>
   </div>
 </template>
@@ -32,14 +24,33 @@ export default {
   },
   data() {
     return {
-      verdict: "You Win!",
-      p_username: "daniellimws",
-      o_username: "someone",
-      p_duration: "10:12",
-      o_duration: "8:33"
+      puzzle: '',
+      status: -1,
+      code: ''
     }
   },
+  async created() {
+    this.puzzle = await ChallengeService.getChall(this.num);
+  },
   methods: {
+    getCardClass() {
+      return {
+        'bg-primary text-white': this.status == -1,
+        'bg-success text-white': this.status == 1,
+        'bg-danger text-white': this.status == 0
+      }
+    },
+    async submit() {
+      // no time to validate with server
+      if (this.code === 'pass') {
+        this.status = 1;
+      }
+      else {
+        this.status = 0;
+      }
+
+      this.$emit('solved');
+    }
   }
 }
 </script>

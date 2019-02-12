@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-primary mb-3 mx-auto my-auto text-white w-50">
+  <div class="card bg-primary mx-auto mt-5 text-white w-50">
     <div class="card-body">
       <h4 class="text-center">{{ verdict }}</h4>
 
@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <a class="btn btn-secondary btn-block" href="challenge">Back</a>
+      <a class="btn btn-secondary btn-block" href="/challenge">Back</a>
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@ export default {
   data() {
     return {
       verdict: "You Win!",
-      p_username: "daniellimws",
+      p_username: "you",
       o_username: "someone",
       p_duration: "10:12",
       o_duration: "8:33"
