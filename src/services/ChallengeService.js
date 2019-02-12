@@ -13,7 +13,9 @@ class ChallengeService {
           ...item,
           myTime: "(" + String(Math.floor(item.myTime / 60)) + "m " + String(item.myTime % 60) + "s)",
           oppTime: item.oppTime == 0 ? "" : "(" + String(Math.floor(item.oppTime / 60)) + "m " + String(item.oppTime % 60) + "s)",
-          date: new Date(item.date)
+          date: new Date(item.date),
+          opponent: item.opponent ? item.opponent : '---',
+          _rowVariant: item.win == 1 ? 'success' : item.win == 0 ? 'danger' : 'info'
         })));
       } catch(err) {
         reject(err);

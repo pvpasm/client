@@ -1,5 +1,27 @@
 <template>
-  <table class="table table-hover">
+  <b-table striped hover :items="challenges" :fields="fields">
+    <template slot="result" slot-scope="data">
+      <i class="fas fa-x" 
+        v-for="(score, index) in data.item.myScore"
+        v-bind:key="index"
+        v-bind:class="getIcon(score)">
+      </i>
+      <strong>{{ data.item.myTime }}</strong>
+      <i class="fas fa-sm fa-bolt px-3"></i>
+      <i class="fas fa-x" 
+        v-for="(score, index) in data.item.oppScore"
+        v-bind:key="index"
+        v-bind:class="getIcon(score)">
+      </i>
+      <strong>{{ data.item.oppTime }}</strong>
+    </template>
+
+    <template slot="date" slot-scope="data">
+      {{ `${data.value.getDate()}/${data.value.getMonth() + 1}/${data.value.getFullYear()}` }}
+    </template>
+
+  </b-table>
+  <!-- <table class="table table-hover">
     <thead class="table-primary">
       <tr>
         <th style="width: 40%" scope="col">OPPONENT</th>
@@ -33,7 +55,7 @@
         <td style="width: 25%">{{ `${challenge.date.getDate()}/${challenge.date.getMonth() + 1}/${challenge.date.getFullYear()}` }}</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
 </template>
 
 <script>
@@ -43,7 +65,8 @@ export default {
   name: 'ChallengeHistory',
   data() {
     return {
-      challenges: []
+      challenges: [],
+      fields: ["opponent", "result", "date"]
     }
   },
   async created() {
