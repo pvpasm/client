@@ -25,12 +25,23 @@
           <a class="nav-link" href="/register">Register</a>
         </li>
       </ul>
-      <span class="ml-auto nav-link text-white" v-if="user">{{ user }}</span>
+      <ul class="navbar-nav ml-auto" v-if="user">
+        <li class="nav-item dropdown">        
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ user }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item bg-white text-primary" href="#" v-on:click="logout">Logout</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
 
 <script>
+import UserService from '../services/UserService';
+
 export default {
   name: 'Navbar',
   data() {
@@ -43,6 +54,16 @@ export default {
   },
   async created() {
     this.user = getCookie("username");
+  },
+  methods: {
+    async logout() {
+      try {
+        await UserService.logout();
+        window.location.href = '/';
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }
 }
 </script>

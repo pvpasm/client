@@ -34,6 +34,18 @@ class UserService {
             }
         })
     }
+
+    // Register
+    static logout() {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const res = await axios.post(`${url}logout`, {});
+                resolve(res.data);
+            } catch(err) {
+                reject(err.response.data.error);
+            }
+        })
+    }
 }
 
 export default UserService;
