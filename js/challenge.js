@@ -150,7 +150,7 @@ function getParams() {
 }
 
 function loadLesson(category, level) {
-    $.get(`http://localhost:5000/api/learn/${category}/${level}`, (data) => {
+    $.get(`http://localhost:3000/api/learn/${category}/${level}`, (data) => {
         drawGraph(data["graph"])
         editor.getModel().setValue(data["code"])
         editor.setPosition({ lineNumber: 2, column: 0 });
@@ -158,7 +158,7 @@ function loadLesson(category, level) {
 }
 
 function submitCode(category, level, code) {
-    $.post(`http://localhost:5000/api/validate/${category}/${level}`, { "code": code }, (data) => {
+    $.post(`http://localhost:3000/api/validate/${category}/${level}`, { "code": code }, (data) => {
         $('#status-msg-content').text(data.msg)
         $('#status-msg-box').show()
         $('#btn-submit').show();

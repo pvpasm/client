@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    $.get("http://localhost:5000/api/learn/metadata", (data) => {
+    $.get("http://localhost:3000/api/learn/metadata", (data) => {
         populateChallList("baby", data["baby"])
         populateChallList("carriage", data["carriage"])
         populateChallList("walking", data["walking"])
