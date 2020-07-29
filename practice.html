@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title>pvpasm</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/all.min.css" />
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="vs/editor/editor.main.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <script src="vs/loader.js"></script>
+    <script src="vs/editor/editor.main.nls.js"></script>
+    <script src="vs/editor/editor.main.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/challenge.js"></script>
+    <script src="js/generate-graph.js"></script>
+
+    <div id="navbar">
+        <div id="nav-left">
+            <a href="/news.html">NEWS</a>
+            <a id="nav-current" href="css/practice.html">PRACTICE</a>
+            <a href="/learn.html">LEARN</a>
+        </div>
+        <div id="nav-right">
+            <a href="/login.html">LOGIN</a>
+        </div>
+    </div>
+
+    <div id="main-container">
+        <div id="left-container">
+            <div id="graph-box">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    baseProfile="full" id="graph-view" width="2000px" height="2500px">
+                    <defs>
+                        <marker id="graph-red-arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2"
+                            orient="auto" class="graph-arrowhead">
+                            <polygon points="0 0.5, 2.5 2, 0 3.5" />
+                        </marker>
+                    </defs>
+                    <defs>
+                        <marker id="graph-green-arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2"
+                            orient="auto" class="graph-arrowhead">
+                            <polygon points="0 0.5, 2.5 2, 0 3.5" />
+                        </marker>
+                    </defs>
+                    <defs>
+                        <marker id="graph-blue-arrowhead" markerWidth="6" markerHeight="4" refX="0" refY="2"
+                            orient="auto" class="graph-arrowhead">
+                            <polygon points="0 0.5, 2.5 2, 0 3.5" />
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+            <div id="left-horizontal-dragbar"></div>
+            <div id="control-box">
+                <div id="status-msg-box">
+                    <div id="status-msg-content"></div>
+                </div>
+
+                <div id="ctrl-btns">
+                    <i class="fas fa-step-backward i-btn level-config"></i>
+                    <i id="level-category" class="fas fa-baby i-btn level-config"></i>
+                    <p id="level-num" class="level-config">1</p>
+                    <i class="fas fa-step-forward i-btn level-config"></i>
+
+                    <select name="lang" id="lang-select" class="level-config">
+                        <option value="x86">x86</option>
+                        <option value="arm">arm</option>
+                        <option value="mips">mips</option>
+                    </select>
+
+                    <i class="fas fa-spinner fa-spin" id="spinner-submit"></i>
+                    <i class="fas fa-upload i-btn" id="btn-submit"></i>
+                </div>
+            </div>
+        </div>
+        <div id="vertical-dragbar"></div>
+        <div id="right-container">
+            <div id="notes-box">
+                <textarea id="notes-area">// Notes here</textarea>
+            </div>
+            <div id="right-horizontal-dragbar"></div>
+            <div id="code-editor-box">
+                <div id="code-editor"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
